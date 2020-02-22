@@ -6,24 +6,26 @@ $request = json_decode($postdata);
 
 
 // {
-// 	"name": "new tank",
-// 	"capacity": "3000",
-// 	"remaining": "3000",
-// 	"location": "behind workshop",
-// 	"material": "1"
+    // Name: [null, Validators.required],
+    // Location: [null, Validators.required],
+    // Capacity: [null, Validators.required],
+    // Remaining: [null, Validators.required],
+    // ContentID: [null, Validators.required],
+    // Img: [null]
 // }
 
 if($request) {
     $sql = "INSERT INTO 
     `tanks` 
-    (`ID`, `Name`, `Capacity`, `Remaining`,`Location`,`ContentsID`) 
+    (`ID`, `Name`, `Capacity`, `Remaining`,`Location`,`ContentsID`, `Img`) 
     VALUES 
     (NULL, 
-    '{$request->name}', 
-    $request->capacity, 
-    $request->remaining, 
-    '{$request->location}',
-    $request->material);";
+    '{$request->Name}', 
+    $request->Capacity, 
+    $request->Remaining, 
+    '{$request->Location}',
+    $request->ContentID,
+    '{$request->Img}');";
 
     if(mysqli_query($connection,$sql)) {
         echo 1;
